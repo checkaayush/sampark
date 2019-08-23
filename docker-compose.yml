@@ -1,0 +1,37 @@
+version: '3'
+
+volumes:
+  sampark:
+
+services:
+
+  api:
+    container_name: sampark
+    build:
+      context: ./
+      dockerfile: development.Dockerfile
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 5000:5000
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:3.6.12
+    volumes:
+      - sampark:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --dbpath /data/db
+    logging:
+      driver: none # Disabled logging for MongoDB. Remove this to re-enable.
+    healthcheck:
+      interval: 5s
+      retries: 10
+      # $$ to make docker-compose not treat this as an environment variable
+      # this test for without replsets
+      test: mongo --quiet --eval "print('ok')"
