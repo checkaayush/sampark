@@ -1,11 +1,20 @@
 <p align="center">
-  <img src="https://github.com/checkaayush/sampark/tree/master/assets/contact-book.png" height="130px"/>
+  <img src="./assets/contact-book.png" height="130px"/>
 </p>
 <h1 align="center">Sampark</h1>
 
 ## Introduction
 
-A RESTful API for managing a contact book.
+Sampark is a contact book REST API written in Golang.
+
+### API Specification
+
+- POST `/contacts` Creates a contact
+- GET `/contacts` Lists contacts
+- GET `/contacts/{id}` Fetches contact by ID
+- GET `/contacts/search` Searches a contact
+- PUT `/contacts/id` Updates a contact
+- DELETE `/contacts/id` Deletes contact by ID
 
 ## Development
 
