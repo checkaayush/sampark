@@ -66,6 +66,6 @@ func main() {
 	v1.PATCH("/contacts/:id", h.UpdateContactByID)
 
 	// Start server
-	addr := getEnvWithDefault("SERVER_ADDR", ":5000")
+	addr := ":" + getEnvWithDefault("PORT", "5000")
 	e.Logger.Fatal(e.Start(addr))
 }

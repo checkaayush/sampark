@@ -12,6 +12,7 @@ help:
 	@echo "    stop - Stop all services."
 	@echo "    start-db - Start database service."
 	@echo "    test - Run tests with coverage report."
+	@echo "    clean - Clean up temporary files."
 
 start:
 	docker-compose up --build
