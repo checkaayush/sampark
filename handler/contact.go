@@ -26,7 +26,7 @@ func (h *Handler) CreateContact(c echo.Context) (err error) {
 		return &echo.HTTPError{Code: http.StatusBadRequest, Message: "Invalid / missing fields"}
 	}
 
-	// Save post in database
+	// Save contact in database
 	db := h.DB.Clone()
 	defer db.Close()
 	if err = db.DB("sampark").C("contacts").Insert(contact); err != nil {
@@ -103,29 +103,6 @@ func (h *Handler) GetContactByID(c echo.Context) (err error) {
 	return c.JSON(http.StatusOK, contact)
 }
 
-// DeleteContactByID fetches a single contact by id from database
-func (h *Handler) DeleteContactByID(c echo.Context) (err error) {
-	// Check if provided id is a valid object id hex
-	if ok := bson.IsObjectIdHex(c.Param("id")); !ok {
-		return c.JSON(http.StatusBadRequest, map[string]string{
-			"message": "Invalid id",
-		})
-	}
-
-	id := bson.ObjectIdHex(c.Param("id"))
-
-	db := h.DB.Clone()
-	if err = db.DB("sampark").C("contacts").Remove(bson.M{"_id": id}); err != nil {
-		if err == mgo.ErrNotFound {
-			return echo.ErrNotFound
-		}
-		return
-	}
-	defer db.Close()
-
-	return c.NoContent(http.StatusNoContent)
-}
-
 // UpdateContactByID fetches a single contact by id from database
 func (h *Handler) UpdateContactByID(c echo.Context) (err error) {
 	// Check if provided id is a valid object id hex
@@ -161,4 +138,27 @@ func (h *Handler) UpdateContactByID(c echo.Context) (err error) {
 	return c.JSON(http.StatusOK, map[string]string{
 		"message": "Contact updated",
 	})
+}
+
+// DeleteContactByID fetches a single contact by id from database
+func (h *Handler) DeleteContactByID(c echo.Context) (err error) {
+	// Check if provided id is a valid object id hex
+	if ok := bson.IsObjectIdHex(c.Param("id")); !ok {
+		return c.JSON(http.StatusBadRequest, map[string]string{
+			"message": "Invalid id",
+		})
+	}
+
+	id := bson.ObjectIdHex(c.Param("id"))
+
+	db := h.DB.Clone()
+	if err = db.DB("sampark").C("contacts").Remove(bson.M{"_id": id}); err != nil {
+		if err == mgo.ErrNotFound {
+			return echo.ErrNotFound
+		}
+		return
+	}
+	defer db.Close()
+
+	return c.NoContent(http.StatusNoContent)
 }
