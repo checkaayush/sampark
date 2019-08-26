@@ -23,8 +23,20 @@ func getEnvWithDefault(name, defaultValue string) string {
 func main() {
 	e := echo.New()
 	e.Logger.SetLevel(log.WARN)
+
+	// Add middlewares
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+
+	// Add Basic Auth
+	e.Use(middleware.BasicAuth(func(user, pass string, c echo.Context) (bool, error) {
+		authUser := getEnvWithDefault("AUTH_USERNAME", "admin")
+		authPass := getEnvWithDefault("AUTH_PASSWORD", "admin")
+		if user == authUser && pass == authPass {
+			return true, nil
+		}
+		return false, nil
+	}))
 
 	// Database connection
 	db, err := mgo.Dial(getEnvWithDefault("MONGO_URI", "mongodb:27017"))

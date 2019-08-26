@@ -10,6 +10,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    command: realize start
     volumes:
       - .:/usr/src/app
     ports:

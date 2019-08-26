@@ -11,8 +11,7 @@ RUN go mod download
 
 # Copy the code from the host and build it
 COPY . /usr/src/app
-# RUN CGO_ENABLED=0 GOOS=linux go build -o /app ./cmd/api/main.go
 RUN CGO_ENABLED=0 GOOS=linux go build -o /app .
 
 EXPOSE 5000
-CMD [ "realize", "start" ]
+CMD [ "/app" ]
