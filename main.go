@@ -49,6 +49,9 @@ func main() {
 	v1.GET("/health", h.Health)
 	v1.POST("/contacts", h.CreateContact)
 	v1.GET("/contacts", h.FetchContacts)
+	v1.GET("/contacts/:id", h.GetContactByID)
+	v1.DELETE("/contacts/:id", h.DeleteContactByID)
+	v1.PATCH("/contacts/:id", h.UpdateContactByID)
 
 	// Start server
 	addr := getEnvWithDefault("SERVER_ADDR", ":5000")

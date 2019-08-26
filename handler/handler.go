@@ -8,8 +8,3 @@ import (
 type Handler struct {
 	DB *mgo.Session
 }
-
-const (
-	// Key (Should come from somewhere else).
-	Key = "secret"
-)

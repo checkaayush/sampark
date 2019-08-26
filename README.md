@@ -13,8 +13,8 @@ Sampark is a contact book REST API written in Golang.
 - GET `/contacts` Lists contacts
 - GET `/contacts/{id}` Fetches contact by ID
 - GET `/contacts/search` Searches a contact
-- PUT `/contacts/id` Updates a contact
-- DELETE `/contacts/id` Deletes contact by ID
+- PATCH `/contacts/{id}` Updates a contact
+- DELETE `/contacts/{id}` Deletes contact by ID
 
 ## Development
 
