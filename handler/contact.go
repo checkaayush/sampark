@@ -30,6 +30,10 @@ func (h *Handler) CreateContact(c echo.Context) (err error) {
 	db := h.DB.Clone()
 	defer db.Close()
 	if err = db.DB("sampark").C("contacts").Insert(contact); err != nil {
+		if mgo.IsDup(err) {
+			msg := "Contact with given email already exists"
+			return &echo.HTTPError{Code: http.StatusBadRequest, Message: msg}
+		}
 		return
 	}
 	return c.JSON(http.StatusCreated, contact)
