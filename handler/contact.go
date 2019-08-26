@@ -52,11 +52,23 @@ func (h *Handler) FetchContacts(c echo.Context) (err error) {
 		limit = 10
 	}
 
+	name := c.QueryParam("name")
+	email := c.QueryParam("email")
+	query := bson.M{}
+
+	if name != "" && email != "" {
+		query = bson.M{"name": name, "email": email}
+	} else if name != "" {
+		query = bson.M{"name": name}
+	} else if email != "" {
+		query = bson.M{"email": email}
+	}
+
 	// Retrieve contacts from database
 	contacts := []*model.Contact{}
 	db := h.DB.Clone()
 	if err = db.DB("sampark").C("contacts").
-		Find(bson.M{}).
+		Find(query).
 		Skip((page - 1) * limit).
 		Limit(limit).
 		All(&contacts); err != nil {
