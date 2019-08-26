@@ -2,16 +2,55 @@ package main
 
 import (
 	"os"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+	"github.com/labstack/gommon/log"
+	"gopkg.in/mgo.v2"
+
+	"github.com/checkaayush/sampark/handler"
 )
 
+func getEnvWithDefault(name, defaultValue string) string {
+	val := os.Getenv(name)
+	if val == "" {
+		val = defaultValue
+	}
+
+	return val
+}
+
 func main() {
-	a := App{}
+	e := echo.New()
+	e.Logger.SetLevel(log.ERROR)
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 
-	a.Initialize(
-		os.Getenv("APP_DB_USERNAME"),
-		os.Getenv("APP_DB_PASSWORD"),
-		os.Getenv("APP_DB_NAME"),
-	)
+	// Database connection
+	db, err := mgo.Dial(getEnvWithDefault("MONGO_URI", "mongodb:27017"))
+	if err != nil {
+		e.Logger.Fatal(err)
+	}
 
-	a.Run(":5000")
+	// Create database indices
+	dbname := getEnvWithDefault("MONGO_DBNAME", "sampark")
+	if err = db.Copy().DB(dbname).C("contacts").EnsureIndex(mgo.Index{
+		Key:    []string{"email"},
+		Unique: true,
+	}); err != nil {
+		log.Fatal(err)
+	}
+
+	// Initialize handler
+	h := &handler.Handler{DB: db}
+
+	// Routes
+	v1 := e.Group("/v1")
+	v1.GET("/health", h.Health)
+	v1.POST("/contacts", h.CreateContact)
+	v1.GET("/contacts", h.FetchContacts)
+
+	// Start server
+	addr := getEnvWithDefault("SERVER_ADDR", ":5000")
+	e.Logger.Fatal(e.Start(addr))
 }

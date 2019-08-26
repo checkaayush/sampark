@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/contact-book.png" height="130px"/>
+  <img src="https://user-images.githubusercontent.com/4137581/63674200-a3cba480-c803-11e9-9f47-b90669bef337.png" height="130px"/>
 </p>
 <h1 align="center">Sampark</h1>
 
@@ -39,12 +39,15 @@ docker-compose up
 #### Dependencies
 
 * [echo](https://echo.labstack.com/) - Web framework
-* [envconfig](https://github.com/kelseyhightower/envconfig) - Configuration management
 * [realize](https://github.com/oxequa/realize) - Live reloading
-* [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) - MongoDB driver
-* [testify](https://github.com/stretchr/testify) - Assertions library
+* [mgo.v2](https://gopkg.in/mgo.v2) - MongoDB driver
+<!-- * [testify](https://github.com/stretchr/testify) - Assertions library -->
 
 ## References
 
 * [Go Modules](https://github.com/golang/go/wiki/Modules)
-* [Using MongoDB Go Driver](https://vkt.sh/go-mongodb-driver-cookbook/)
+<!-- * [Using MongoDB Go Driver](https://vkt.sh/go-mongodb-driver-cookbook/) -->
+
+## Acknowledgements
+
+> Logo credit goes to [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com) and is licensed under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0).
