@@ -22,7 +22,7 @@ func getEnvWithDefault(name, defaultValue string) string {
 
 func main() {
 	e := echo.New()
-	e.Logger.SetLevel(log.ERROR)
+	e.Logger.SetLevel(log.WARN)
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 

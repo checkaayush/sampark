@@ -11,7 +11,7 @@ require (
 	github.com/labstack/gommon v0.2.8
 	github.com/mattn/go-colorable v0.1.1 // indirect
 	github.com/mattn/go-isatty v0.0.7 // indirect
-	github.com/stretchr/testify v1.3.0 // indirect
+	github.com/stretchr/testify v1.3.0
 	github.com/valyala/fasttemplate v1.0.1 // indirect
 	golang.org/x/crypto v0.0.0-20190426145343-a29dc8fdc734 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect

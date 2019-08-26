@@ -8,5 +8,5 @@ import (
 
 // Health checks health of the API
 func (h *Handler) Health(c echo.Context) (err error) {
-	return c.String(http.StatusCreated, "OK")
+	return c.String(http.StatusOK, "OK")
 }

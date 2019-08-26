@@ -9,12 +9,12 @@ Sampark is a contact book REST API written in Golang.
 
 ### API Specification
 
-- POST `/contacts` Creates a contact
-- GET `/contacts` Lists contacts
-- GET `/contacts/{id}` Fetches contact by ID
-- GET `/contacts/search` Searches a contact
-- PATCH `/contacts/{id}` Updates a contact
-- DELETE `/contacts/{id}` Deletes contact by ID
+- GET `/v1/health` Health check to indicate API health
+- POST `/v1/contacts` Creates a contact
+- GET `/v1/contacts` Lists and searches contacts
+- GET `/v1/contacts/{id}` Fetches contact by ID
+- PATCH `/v1/contacts/{id}` Updates a contact
+- DELETE `/v1/contacts/{id}` Deletes contact by ID
 
 ## Development
 
@@ -41,7 +41,7 @@ docker-compose up
 * [echo](https://echo.labstack.com/) - Web framework
 * [realize](https://github.com/oxequa/realize) - Live reloading
 * [mgo.v2](https://gopkg.in/mgo.v2) - MongoDB driver
-<!-- * [testify](https://github.com/stretchr/testify) - Assertions library -->
+* [testify](https://github.com/stretchr/testify) - Assertions library
 
 ## References
 
