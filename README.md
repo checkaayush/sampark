@@ -24,9 +24,16 @@ Sampark is a contact book REST API written in Golang.
 2. Add .env file in the repository root by modifying the .env.template file as needed.
 3. From repository root, run:
 ```bash
-docker-compose up
+make start
 ```
 4. API will be up and running at http://localhost:5000.
+
+## Testing
+
+From repository root, run:
+```bash
+make test
+```
 
 ### Dependency Management
 
