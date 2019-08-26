@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Sampark is a contact book REST API written in Golang.
+Sampark is a contact book REST API written in Golang. It uses MongoDB as the primary data store and is built using [SOLID](https://en.wikipedia.org/wiki/SOLID) design priciples and [12-Factor App](https://12factor.net/) methodology in mind.
 
 ### API Specification
 
@@ -15,6 +15,26 @@ Sampark is a contact book REST API written in Golang.
 - GET `/v1/contacts/{id}` Fetches contact by ID
 - PATCH `/v1/contacts/{id}` Updates a contact
 - DELETE `/v1/contacts/{id}` Deletes contact by ID
+
+### API Remarks
+
+- API has been hosted on Heroku (https://sampark.herokuapp.com)
+- API supports CRUD operations on `Contact` entity
+- Each contact has a unique email address, which is ensured by having a unique index on the `email` field
+- Allows searching by name and email address. GET `/v1/contacts?name=<NAME>&email=<EMAIL>` lets you search via name and/or email
+- Search supports pagination and returns 10 items by default per invocation. Example: GET `/v1/contacts?page=1&limit=5`.
+- Added tests for each functionality
+- Basic authentication has been added using environment variables
+- Some preliminary load tests will ensure that the code can scale-out for millions of contacts
+
+### Error Codes
+
+| Code Range | Description |
+| ----- | ----- |
+| 2xx | This range of response code indicates that request was fulfilled successfully and no error was encountered. |
+| 400 | This return code indicates that there was an error in fulfilling the request because the supplied parameters are invalid or inadequate. |
+| 401 | This return code means that we are not able to authenticate your request. Please re-check your username and password. |
+| 5xx | This response code indicates that there was an internal server error while processing the request. |
 
 ## Development
 
