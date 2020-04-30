@@ -1,7 +1,12 @@
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/4137581/63674200-a3cba480-c803-11e9-9f47-b90669bef337.png" height="130px"/>
-</p>
-<h1 align="center">Sampark</h1>
+<div align="center">
+  <p>
+    <img src="https://user-images.githubusercontent.com/4137581/63674200-a3cba480-c803-11e9-9f47-b90669bef337.png" height="130px"/>
+  </p>
+  <h1>Sampark</h1>
+  <a href="https://goreportcard.com/report/github.com/checkaayush/sampark">
+    <img src="https://goreportcard.com/badge/github.com/checkaayush/sampark"/>
+  </a>
+</div>
 
 ## Introduction
 
@@ -29,12 +34,12 @@ Sampark is a contact book REST API written in Golang. It uses MongoDB as the pri
 
 ### Error Codes
 
-| Code Range | Description |
-| ----- | ----- |
-| 2xx | This range of response code indicates that request was fulfilled successfully and no error was encountered. |
-| 400 | This return code indicates that there was an error in fulfilling the request because the supplied parameters are invalid or inadequate. |
-| 401 | This return code means that we are not able to authenticate your request. Please re-check your username and password. |
-| 5xx | This response code indicates that there was an internal server error while processing the request. |
+| Code Range | Description                                                                                                                             |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 2xx        | This range of response code indicates that request was fulfilled successfully and no error was encountered.                             |
+| 400        | This return code indicates that there was an error in fulfilling the request because the supplied parameters are invalid or inadequate. |
+| 401        | This return code means that we are not able to authenticate your request. Please re-check your username and password.                   |
+| 5xx        | This response code indicates that there was an internal server error while processing the request.                                      |
 
 ## Development
 
