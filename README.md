@@ -2,7 +2,11 @@
   <p>
     <img src="https://user-images.githubusercontent.com/4137581/63674200-a3cba480-c803-11e9-9f47-b90669bef337.png" height="130px"/>
   </p>
+  
   <h1>Sampark</h1>
+  
+  <img src="https://github.com/checkaayush/sampark/workflows/build/badge.svg?branch=master"/>
+
   <a href="https://goreportcard.com/report/github.com/checkaayush/sampark">
     <img src="https://goreportcard.com/badge/github.com/checkaayush/sampark"/>
   </a>
