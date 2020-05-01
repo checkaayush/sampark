@@ -21,7 +21,7 @@ func getEnvWithDefault(name, defaultValue string) string {
 }
 
 func main() {
-	e := echo.New()
+	e = echo.New()
 	e.Logger.SetLevel(log.WARN)
 
 	// Add middlewares
