@@ -26,3 +26,6 @@ jobs:
 
     - name: Build
       run: go build -v .
+    
+    - name: Go Patch Coverage
+      uses: seriousben/go-patch-cover-action@v1.1.2
