@@ -27,5 +27,8 @@ jobs:
     - name: Build
       run: go build -v .
     
+    - name: Run tests
+      run: "go test -coverprofile=coverage.out -covermode=count ./..."
+
     - name: Go Patch Coverage
       uses: seriousben/go-patch-cover-action@v1.1.2
